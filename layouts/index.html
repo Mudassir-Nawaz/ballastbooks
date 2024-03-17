@@ -67,7 +67,7 @@
                         <div id="bannerBtn d-flex justify-content-center align-self-center"><a href='{{ "/contact-us/submit-your-book-idea" | relURL }}'
                                 class="button sml">Submit Your Book Idea</a></div>
                         <div class="d-flex flex-column gap-3">
-                            <h2>
+                            <h2 class="py-0">
                                 {{if .Params.banner_title}}
                                 {{.Params.banner_title|safeHTML}}
                                 {{else}}
@@ -75,7 +75,7 @@
                                 {{end}}
                             </h2>
                             {{if .Params.banner_tagline}}
-                            <h3 class="bannerTagline py-0">{{.Params.banner_tagline | safeHTML}}</h3>
+                            <h3 class="bannerTagline">{{.Params.banner_tagline | safeHTML}}</h3>
                             {{end}}
                             <div class="bannerTxt k2d">
                                 {{if .Params.banner_text}}
@@ -103,8 +103,8 @@
 
     <section class="container d-flex flex-column gap-5 py-5">
         <div class="row">
-            <div class="col-12 text-center">
-                <h2>Ballast Author Testimonials</h2>
+            <div class="col-12 text-center py-0">
+                <h2 class="py-0">Ballast Author Testimonials</h2>
             </div>
         </div>
         <div class="d-flex w-100 gap-2 flex-column flex-lg-row">
@@ -416,7 +416,7 @@
                                     author.”</i></p>
                             <h3>-Michael Stutts</h2>
                                 <p>Author of <i>There’s No Room Service at the Psych Ward</i></p>
-                                <img src="/img/bookcover/MichaelStutts_FrontCover_Hardcover_Lock_3D.png" alt=""
+                                <img src="/img/bookstore/MichaelStutts_FrontCover_Hardcover_Lock_3D.png" alt=""
                                     style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
                         </div>
                     </div>
@@ -435,7 +435,7 @@
                                     my expectations!”</i></p>
                             <h3>-Dafne Toro</h2>
                                 <p>Author of <i>The Strategic Business of You</i></p>
-                                <img src="/img/bookcover/The Strategic Business of You_3DFC.png" alt=""
+                                <img src="/img/bookstore/The Strategic Business of You_3DFC.png" alt=""
                                     style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
                         </div>
                     </div>
@@ -452,7 +452,7 @@
                                     publishers within the top seven."</i></p>
                             <h3>-Diana Smith</h2>
                                 <p>Author of <i>Remaking the Space Between Us</i></p>
-                                <img src="/img/bookcover/Remaking the Space Between Us_3DFC.png" alt=""
+                                <img src="/img/bookstore/remaking-the-space.png" alt=""
                                     style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
                         </div>
                     </div>
