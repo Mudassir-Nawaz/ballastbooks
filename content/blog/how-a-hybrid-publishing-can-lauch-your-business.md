@@ -4,7 +4,6 @@ description: >-
    As business leaders across markets better understand the value professional coaching provides, a wash of new coaches, all hoping to cash in, has flooded the pool. Whether you’re an established business coach with decades of experience or a newcomer desperate to make your mark, taking strategic steps now will ensure you’re ready to float above the rest.
 date: 2023-27-05
 image: /img/blog/Publishing-Paths-Demystified-1-square.png
-weight: 1
 ---
 
 Let’s take a deep dive into how a book will help you do just that.
