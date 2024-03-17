@@ -1,0 +1,19 @@
+<section class="section" id="join-family">
+    
+<div class="container">
+    <div class="row">
+        <div class="col col-12 col-md-8">
+            <div class="join-family-bx">
+            <h3 class="sectionTitle big">Join Our Family</h3>
+            <div class="sectionTagline">Become <span class="text-lowercase">a</span> Ballast Books Author Today!</div>
+            {{/*  <p class="font23">Get in touch to get started on your publishing journey, our author services will guide you through the process to maximize your potential.</p>  */}}
+            {{ if isset .Site.Params "start_book_link" }}
+            <div id="startBookBtn"><a href='{{ "contact-us/submit-your-book-idea" | relURL }}' class="button sml">Start Your Book »</a></div>
+            {{end}}
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-image" style='background-image:url({{ "img/bg_join_family.jpg" | relURL }})'></div>
+</section>

@@ -1,0 +1,70 @@
+{{ partial "head.html" . }}
+
+<body {{ if .Params.id }}id='{{ .Params.id }}' {{end}}>
+
+    {{ partial "header.html" . }}
+
+    <section id="banner">
+
+        {{ if .Params.banner_image }}
+        <div class="banner-image aos-item" data-aos="fade-in"
+            style="background-image:url('{{ .Params.banner_image }}')"></div>
+        {{end}}
+
+        <div class="container">
+
+            <div class="row justify-content-end">
+                <div class="col col-12 col-sm-7 col-md-6 animated fadeInLeft">
+
+                    <h2>
+                        {{if .Params.banner_title}}
+                        {{.Params.banner_title|safeHTML}}
+                        {{else}}
+                        {{ .Title }}
+                        {{end}}
+                    </h2>
+                    {{if .Params.banner_tagline}}
+                    <div class="bannerTagline">{{.Params.banner_tagline}}</div>
+                    {{end}}
+                    <div class="bannerTxt">
+                        {{if .Params.banner_text}}
+                        {{.Params.banner_text|safeHTML}}
+                        {{else}}
+                        {{ .Description }}
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+                {{ range (.Pages.ByParam "weight") }}
+                <section id="{{ .Params.id }}">
+                    {{ if .Params.books_slider}}
+                    {{ partial "about-book-slider.html" . }}
+                    {{end}}
+                    {{ if .Params.image }}
+                    <div class="bg-image aos-item" data-aos="fade-in">
+                        <img src='{{ .Params.image }}' class="lazy img-fluid" alt="{{ .Site.Title }} - {{ .Title }} Image">
+                    </div>
+                    {{end}}
+                    <div class="container">
+                        <div class="row {{ .Params.position }}">
+                            <div class="col-12 {{ .Params.size }}">
+                                {{ .Content }}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {{ end }}
+
+
+    {{ partial "join-family.html" . }}
+
+    {{ partial "footer.html" . }}
+
+    {{ partial "scripts.html" . }}
+
+</body>
+
+</html>

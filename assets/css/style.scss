@@ -1,0 +1,32 @@
+/*The Foundation and Reset Based in Bootstrap 5.1.3*/
+@import "bootstrap_5.1.3/bootstrap.scss";
+
+/* Optional Features */
+@import "aos.scss"; /* Section Animations */
+@import "animate.scss"; /* Basic Animations */
+@import "magnific-popup.scss"; /* LightBox */
+
+/* Naked Framework Requirements */
+@import "variables.scss";
+@import "default.scss"; /*Do NOT modify*/
+@import "owl.carousel.min.scss";
+@import "custom.scss";
+
+.author-image{
+    float: right;
+    padding-left: 40px;
+    max-width: 400px;
+}
+
+@media (max-width: 768px) {
+    .author-image {
+      float: none;
+      padding-left: 0;
+      margin: 0 auto;
+      display: block;
+      max-width: 80% !important;
+      width: 300px;
+
+    //   display: none;
+    }
+}

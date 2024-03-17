@@ -1,0 +1,24 @@
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9KHLFR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="preloader"></div>
+
+<header>
+<div id="headerLogo">
+    <a href='{{ "/" | relURL }}'><img src='{{ "img/logo.svg" | relURL }}' alt="{{ .Site.Title }} Logo" style="max-width: 100px !; "></a>
+</div>
+<nav>
+    <a href="javascript:void(0)" id="toggle-menu"><i class="fa fa-bars"></i>&nbsp; Menu</a>
+    <ul>
+        {{ partial "menu.html" . }}
+    </ul>
+</nav>
+
+<div id="headerRight" class="flex">
+    <div id="headerCart"><button class="snipcart-checkout"><i class="fas fa-shopping-cart"></i></button></div>
+</div>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+</header>

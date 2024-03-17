@@ -1,0 +1,11 @@
+<div id="about-book-slider" class="flexslider">
+    <ul class="slides">
+        {{ range first 10 (where (.Site.RegularPages.ByParam "date") "Type" "purchase") }}
+        <li>
+            <a href="{{ .Permalink }}">
+                <img src="{{.Params.image}}"/>
+            </a>
+        </li>
+        {{end}}
+    </ul>
+</div>

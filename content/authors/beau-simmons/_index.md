@@ -1,0 +1,9 @@
+---
+title: Beau Simmons
+#bio_image: /img/authors/adam-demarco.jpg
+#author_book: /img/authors/author_book_1.png;
+weight: 9
+authors_weight: 9
+#description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla placerat libero sit amet purus posuere, nec efficitur dui pretium. Phasellus non aliquet nisi. Ut cursus, est ac lobortis laoreet, magna dolor commodo tortor, ac fringilla sem metus vitae ligula.
+---
+Beau Simmons has been a professional photographer since 2009. He grew up just outside Joshua Tree National Park. An adventurer, Beau grew up working on and racing motorcycles as a child. He made a name for himself at 21 on the fashion photography scene working with clients including Marc Jacobs, 7 For All Mankind, Guess Jeans, and Converse. He was a go-to photographer for such agencies as Elite Models, IMG, and Ford Models. Beau captures his work exclusively on film using the lost art of medium format film photography, feeling it gives a classic look and feel to his work. The fashion scene began to grind on Beau. Being a cowboy is in his blood. In this spirit, he decided to pursue his passion for capturing classic Americana and the wonder of the American landscape. Through this cross-country journey, he was introduced to the veteran non-profit Heroes and Horses, a group that uses equine therapy to help veterans cope with PTSD and traumatic brain injuries. His commitment to telling an authentic story about American veterans is on full display in his first feature photo book, The Twenty-Year War, which he created with two former Army Rangers, one of whom is his childhood friend, Dan Blakeley. Beau is the Co-Founder and Chief Creative Officer of United Valor.

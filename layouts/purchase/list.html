@@ -1,0 +1,108 @@
+{{ partial "head.html" . }}
+
+<body {{ if .Params.id }}id='{{ .Params.id }}' {{end}}>
+
+    {{ partial "header.html" . }}
+
+    <section id="banner">
+
+        {{ if .Params.banner_image }}
+        <div class="banner-image aos-item" data-aos="fade-in"
+            style="background-image:url('{{ .Params.banner_image }}')"></div>
+        {{end}}
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col col-12 col-md-6 text-center animated fadeInDown">
+
+                    <h2>
+                        {{if .Params.banner_title}}
+                        {{.Params.banner_title|safeHTML}}
+                        {{else}}
+                        {{ .Title }}
+                        {{end}}
+                    </h2>
+                    {{if .Params.banner_tagline}}
+                    <div class="bannerTagline">{{.Params.banner_tagline}}</div>
+                    {{end}}
+                    <div class="bannerTxt">
+                        {{if .Params.banner_text}}
+                        {{.Params.banner_text|safeHTML}}
+                        {{else}}
+                        {{ .Description }}
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section id="filter-books">
+        <div class="container">
+          <div id="book-search">
+          <input type="text" onkeyup="filter(this)" placeholder="Search Bookstore" />
+        </div>
+      </section>
+      <script language="javascript" type="text/javascript">
+        function filter(element) {
+          var value = $(element).val().toLowerCase();
+            $(".booksRow > .col").each(function() {
+              if ($(this).text().toLowerCase().search(value) > -1){
+                    $(this).show();
+                }
+                else {
+                    $(this).hide();
+                }
+            });
+        }
+      </script>
+    <main>
+        <div class="container">
+
+            <div class="row gridRow booksRow">
+                {{ range (.Pages.ByParam "weight") }}
+                <div class="col col-12 col-md-4 col-sm-6">
+                    <div class="gridBx">
+                        <div class="bookImgBx">
+                            <a href="{{ .Permalink }}"><div class="bookImg" style="background-image:url({{ .Params.image }})"></div></a>
+                        </div>
+                        <div class="gridBxContent">
+                            <h3><a href="{{ .Permalink }}">{{.Title}}</a></h3>
+
+                            
+                            <div class="bookAuthor">
+                                By:
+                                {{ range (.GetTerms "authors") }}
+                                <span>{{ .Title }}</span>
+                                {{end}}
+                            </div>
+                            
+
+
+                            {{if .Params.price}}
+                                <div class="bookPrice">${{.Params.price}}</div>
+                            {{end}}
+                            <div class="gridBxBtn">
+                                {{ partial "snipcart-button.html" . }}
+                                <span></span>
+                                <a class="linkMore" href="{{.Permalink}}">or Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+
+    </main>
+
+    {{ partial "join-family.html" . }}
+
+    {{ partial "footer.html" . }}
+
+    {{ partial "scripts.html" . }}
+
+</body>
+
+</html>

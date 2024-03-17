@@ -1,0 +1,51 @@
+<form accept-charset="UTF-8" action='{{ .Site.Params.form_book }}'method="POST" class="aos-item" data-aos="fade-in">
+
+    <input type="hidden" name="utm_source" value="">
+    <input type="hidden" name="utm_medium" value="">
+    <input type="hidden" name="utm_campaign" value="">
+
+    <div class="col col-12 labelToggle">
+        <label for="full_name">Your Name*</label>
+        <input type="text" id="full_name" class="formField" name="full_name" placeholder="ex. John or Jane Doe" required>
+    </div>
+
+    <div class="col col-12 col-sm-6 labelToggle">
+        <label for="email">Email Address*</label>
+        <input type="email" id="email" name="email" placeholder="ex. yourname@email.com" required class="formField labelToggle">
+    </div>
+
+    <div class="col col-12 col-sm-6 labelToggle">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" class="phone" name="phone" placeholder="(123) 456-7890" class="formField labelToggle" required>
+    </div>
+
+    <div class="col col-12 labelToggle">
+        <label for="book_summary">Please provide a synopsis or summary of your book*</label>
+        <textarea name="book_summary" id="book_summary" required cols="30" rows="10" placeholder="Tell us about your book idea..." class="formField labelToggle"></textarea>
+    </div>
+
+    <div class="col col-12 labelToggle">
+        <label for="published">Please list the services you think you will require: Ex.: ghostwriting, editing, cover design, interior design, e-book formatting, audiobook production, distribution, marketing & PR, or everything*</label>
+        <input type="text" id="published" required class="formField" name="published">
+    </div>
+
+    <div class="col col-12 labelToggle">
+        <label for="writing_process">How far along are you in the writing process? Ex. Still an idea, a rough draft, or a completed manuscript*</label>
+        <textarea name="writing_process" id="writing_process" required cols="30" rows="10" class="formField labelToggle"></textarea>
+    </div>
+
+    <div class="col col-12 labelToggle">
+        <label for="notes">Any notes for our acquisitions team?</label>
+        <textarea name="notes" id="notes" cols="30" rows="10" placeholder="Anything else you'd like to share?" class="formField labelToggle"></textarea>
+    </div>
+
+    <div class="col-12 mb-3">
+        <label for="file-upload">File Upload (Max File Size 15MB)</label>
+        <input type="file" maxsize="2000" id="file-upload" name="file-upload" />
+    </div>
+
+    <div class="col">
+        <button type="submit" class="button">Submit Your Book Idea</button>
+    </div>
+
+</form>

@@ -1,0 +1,57 @@
+{{ partial "head.html" . }}
+
+<body {{ if .Params.id }}id='{{ .Params.id }}' {{end}}>
+
+    {{ partial "header.html" . }}
+
+    <section id="our-team">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Our Team</h2>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                {{ range (where (.Site.RegularPages.ByWeight) "Type" "team") }}
+
+                <div class="col-12 col-md-4 text-center">
+                    <img src="{{ .Params.image }}" class="img-team" alt="{{ .Title }} Image - Ballast Books Team">
+                    <h2>{{ .Title }}</h2>
+                    {{ if .Params.designation }}
+                    <p>{{ .Params.designation }}</p>
+                    {{end}}
+                    <a href="#{{ .Title | anchorize }}" class="button open-popup-link">Read Bio &rsaquo;</a>
+                </div>
+
+                <div id="{{ .Title | anchorize }}" class="bioBx mfp-hide">
+                    <img src="{{ .Params.image }}" alt="{{ .Title }} Image - Ballast Books Team">
+                    <h2>{{ .Title }}</h2>
+                    {{.Content}}
+                </div>
+
+                {{end}}
+
+            </div>
+        </div>
+    </section>
+
+    {{ partial "join-family.html" . }}
+
+    {{ partial "footer.html" . }}
+
+    {{ partial "scripts.html" . }}
+
+    <style>
+        @media (min-width: 768px) {
+            .img-team{
+                max-width: 400px !important;
+                max-height: 400px !important;
+                object-fit: cover !important;
+                object-position: center;
+                aspect-ratio: 1 / 1;
+            } 
+        }
+    </style>
+</body>
+
+</html>

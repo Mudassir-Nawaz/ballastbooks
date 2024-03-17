@@ -1,0 +1,11 @@
+{{ $currentPage := . }}
+{{ range .Site.Menus.main }}
+<li class='{{.Params.class}} menu-item{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} current-menu-item{{end}}'> <a title="{{ .Name }}" href="{{ .URL }}">{{ .Pre }} <span>{{ .Name }}</span>
+  {{ if .HasChildren }} <i class="fas fa-angle-down"></i> {{ end }} </a> {{ if .HasChildren }}
+  <ul class="sub-menu">
+    {{ range .Children }}
+    <li class='menu-item{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} current-menu-item{{end}}'> <a title="{{ .Name }}" href="{{ .URL }}">{{ .Name }}</a> </li>
+    {{ end }}
+  </ul>
+  {{ end }} </li>
+{{ end }}

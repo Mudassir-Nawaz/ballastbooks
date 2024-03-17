@@ -1,0 +1,8 @@
+<div class="featured-logos">
+    <div class="owl-carousel owl-theme"> {{ $featuredsUrl := print "/static/img/featured-logos" }}
+      {{ range readDir $featuredsUrl }}
+      {{ $imgURL := print "img/featured-logos/" .Name | absURL }}
+      <div class="item flex"><img src="{{ $imgURL }}"/></div>
+      {{ end }} </div>
+  </div>
+  

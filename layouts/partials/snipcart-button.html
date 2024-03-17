@@ -1,0 +1,28 @@
+{{ if .Params.outbound }}
+<a href="{{ .Params.outbound }}" class="button" target="_blank">Buy Now &rsaquo;</a>
+{{else }}
+<button
+        class="snipcart-add-item buy-button button"
+        data-item-id="{{ .Params.id }}"
+        data-item-name="{{ .Title }}"
+        data-item-price="{{ .Params.price }}"
+        data-item-url="https://ballastbooks.com/purchase/"
+        data-item-weight="{{ .Params.product_weight }}"
+        data-item-image="{{ .Params.image }}"
+        data-item-description="{{ if .Params.product_description}}{{.Params.product_description}}{{else}}{{ .Description}}{{end}}"
+        {{ if .Params.option1 }}
+        data-item-custom1-name="{{ .Params.option1_name }}"
+        data-item-custom1-options="{{ .Params.option1 }}"
+        {{end}}
+        {{ if .Params.option2 }}
+        data-item-custom2-name="{{ .Params.option2_name }}"
+        data-item-custom2-option2="{{ .Params.option2 }}"
+        {{end}}
+        {{ if .Params.preorder_text }}
+        data-item-custom1-name="Pre-order"
+        data-item-custom1-type="readonly"
+        data-item-custom1-value="{{ .Params.preorder_text }}"
+        {{end}}>
+        {{ if .Params.preorder }}Preorder Now{{else}}Add to Cart{{end}}
+</button>
+{{end}}

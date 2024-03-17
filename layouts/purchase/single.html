@@ -1,0 +1,82 @@
+{{ partial "head.html" . }}
+
+<body {{ if .Params.id }}id='{{ .Params.id }}' {{end}} class="single-book">
+
+
+<div id="banner">
+    <div class="container">
+        <!-- <div class="bookImgBx" data-aos="zoom-in">
+            <div class="bookImg" style="background-image:url({{ .Params.image }})"></div>
+        </div> -->
+        <div class="bookImgBx" data-aos="zoom-in">
+            <img class="bookImg2" src="{{ .Params.image }}" style="object-fit: {{ .Params.fit }};">
+        </div>
+        <div class="authorMeta animated fadeInLeft">
+            <h1 style="margin-bottom: 10px;">{{.Title}}</h1>
+            {{ if .Params.subtitle }}
+            <h2>{{ .Params.subtitle }}</h2>
+            {{ end }}
+            {{ if .Params.preorder_text }}
+            <h5>{{ .Params.preorder_text | markdownify}}</h5>
+            {{end}}
+            {{ if .Params.subheading }}
+            <h5>{{ .Params.subheading | markdownify}}</h5>
+            {{end}}
+            <div class="bookAuthor">
+        {{ range .Param "authors" }}
+        {{ $name := . }}
+        {{ $path := printf "/%s/%s" "authors" ($name | urlize) }}
+        {{ with $.Site.GetPage $path }}
+
+                {{ if .Params.bio_image }}
+                <div class="authorIcon" style='background-image:url({{ .Params.bio_image }})'></div>
+                {{end}}
+                <span><a href="{{.Permalink}}">{{ .Params.title }}</a></span>
+        {{ end }}
+        {{ end }}
+            {{if .Params.andy}}<span id="andy">with Andy Symonds.</span>{{end}}
+
+            {{ if .Params.foreward }}<span id="andy">Foreword by {{ .Params.foreward }}</span>{{end}}
+        </div>
+
+            
+            <div class="bannerBtn">{{ partial "snipcart-button.html" . }}</div>
+            {{ if .Params.secondBtn }}
+            <div class="bannerBtn">
+                <a class="buy-button button" href="{{ .Params.secondBtn_link}}">{{ .Params.secondBtn_title }}</a>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</div>
+<main>
+    <div class="container">
+        {{if .Params.about_image}}
+        <div class="aboutBookImg" data-aos="zoom-in"><img src="{{.Params.about_image}}"></div>
+        {{end}}
+
+        {{ if .Params.review }}
+        <div class="review">
+            <p><i>"{{ .Params.review | safeHTML }}"</i></p>
+        </div>
+        {{end}}
+        <div class="aboutBookContent" data-aos="fade-right">
+            {{ if ne .Params.title "Beyond the Sea" }}
+            <h3 class="sectionTitle text-white">About the Book:</h3>
+            {{ end }}
+            {{.Content}}
+            {{ partial "snipcart-button.html" . }}
+        </div>
+
+    </div>
+</main>
+
+{{ partial "join-family.html" . }}
+
+{{ partial "footer.html" . }}
+
+{{ partial "script-custom.html" . }}
+
+</style>
+</body>
+</html>

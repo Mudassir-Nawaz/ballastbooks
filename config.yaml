@@ -1,0 +1,80 @@
+baseURL:
+languageCode: en-us
+title: Ballast Books
+taxonomies:
+  category: categories
+  author: authors
+  tag: tags
+enableRobotsTXT: true
+paginate: 1
+params:
+  twitter_user: kris_ray
+  twitter_link: https://twitter.com/
+  facebook_link: http://www.facebook.com/
+  instagram_link: https://www.instagram.com/
+  #google_analytics: UA-
+  paid_for: Paid for by Language Goes Here
+  form_endpoint: https://usebasin.com/f/b5216cebfbfb
+  form_book: https://usebasin.com/f/269591cff9b3
+  start_book_link: /contact-us
+markup:
+  goldmark:
+    parser:
+      autoHeadingID: false
+    renderer:
+      unsafe: true
+
+menu:
+  main:
+    - name: Home
+      url: /
+      weight: 10
+      pre: <i class="fas fa-home"></i>
+      params:
+        class: home-menu-item
+    - name: About
+      url: /about/
+      weight: 20
+    - name: Team
+      url: /team/
+      weight: 25
+    - name: Services
+      url: /services/
+      weight: 30
+    - name: Blog
+      url: /blog/
+      weight: 50
+    - name: Bookstore
+      url: /purchase/
+      weight: 60
+    - name: FAQs
+      url: /faqs/
+      weight: 70
+    - name: Contact Us
+      url: /contact-us/
+      weight: 80
+  footer:
+    - name: Home
+      url: /
+      weight: 10
+    - name: About
+      url: /about/
+      weight: 20
+    - name: Services
+      url: /services/
+      weight: 30
+    - name: Our Authors
+      url: /authors/
+      weight: 50
+    - name: Bookstore
+      url: /purchase/
+      weight: 60
+    - name: FAQs
+      url: /faqs/
+      weight: 65
+    - name: Contact Us
+      url: /contact-us/
+      weight: 70
+    - name: Blog
+      url: /blog/
+      weight: 80

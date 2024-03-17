@@ -1,0 +1,523 @@
+{{ partial "head.html" . }}
+
+<body {{ if .Params.id }}id='{{ .Params.id }}' {{end}}>
+
+    {{ partial "header.html" . }}
+    <style>
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #5575A3;
+        }
+
+        .swiper-pagination>span {
+            background-color: #5575A3 !important;
+            color: #5575A3 !important;
+        }
+
+        @media (max-width: 767px) {
+
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none;
+            }
+        }
+
+        .video {
+            width: 100%;
+            height: auto;
+        }
+
+        @media (min-width: 992px) {
+            .video {
+                width: 50%;
+            }
+        }
+    </style>
+
+    <section id="banner">
+        {{ if .Params.banner_image }}
+        <div class="banner-image aos-item" data-aos="fade-in"
+            style="background-image:url('{{ .Params.banner_image }}')"></div>
+        {{end}}
+        <div class="container">
+            <div class="row">
+                <div class="col col-11 col-md-8 animated fadeInLeft">
+                    <div class="bannerTxtBx d-flex flex-column justify-contenct-center align-items-center gap-3">
+                        <div id="bannerBtn d-flex justify-content-center align-self-center"><a href='{{ "/contact-us/submit-your-book-idea" | relURL }}'
+                                class="button sml">Submit Your Book Idea</a></div>
+                        <div class="d-flex flex-column gap-3">
+                            <h2>
+                                {{if .Params.banner_title}}
+                                {{.Params.banner_title|safeHTML}}
+                                {{else}}
+                                {{ .Title | safeHTML }}
+                                {{end}}
+                            </h2>
+                            {{if .Params.banner_tagline}}
+                            <h3 class="bannerTagline py-0">{{.Params.banner_tagline | safeHTML}}</h3>
+                            {{end}}
+                            <div class="bannerTxt k2d">
+                                {{if .Params.banner_text}}
+                                {{.Params.banner_text|safeHTML}}
+                                {{else}}
+                                {{ .Description }}
+                                {{end}}
+                            </div>
+                        </div>
+
+                        <div class="bannerBtn d-flex justify-content-center py-0"><a href='{{ "/about" | relURL }}'
+                                class="button sml">{{.Params.banner_btn_label}}</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="home-tagline">
+        <div class="container" data-aos="zoom-in">
+            <span class="text-skyblue">There’s <span class="text-lowercase">a</span> better way.</span> See how Ballast
+            Books has democratized publishing.
+        </div>
+    </section>
+
+    <section class="container d-flex flex-column gap-5 py-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Ballast Author Testimonials</h2>
+            </div>
+        </div>
+        <div class="d-flex w-100 gap-2 flex-column flex-lg-row">
+            <video controls start="2" id="myVideo" class="video rounded">
+                <source src="/video/author.mp4" type="video/mp4">
+            </video>
+            <video controls start="2" id="newVideo" class="video rounded">
+                <source src="/video/another-video.mp4" type="video/mp4">
+            </video>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var video = document.getElementById('myVideo');
+                video.addEventListener('loadedmetadata', function () {
+                    video.currentTime = 1.5; // Set the desired start time in seconds
+                });
+            });
+            document.addEventListener('DOMContentLoaded', function () {
+                var newVideo = document.getElementById('newVideo');
+                newVideo.addEventListener('loadedmetadata', function () {
+                    newVideo.currentTime = 1.5; // Set the desired start time in seconds
+                });
+            });
+        </script>
+    </section>
+
+    <!-- <section id="featured-logos">
+    <div class="container" data-aos="fade-down">
+        <h3 class="featuredTitle text-center pb-0">Authors Featured In</h3>
+        {{ partial "logos.html" . }}
+    </div>
+</section> -->
+
+    <section id="home-services" class="py-5">
+        <div class="container d-flex flex-column gap-4">
+            <div class="d-flex flex-column gap-2">
+                <div class="home-services-tagline py-0 text-center d-flex flex-column gap-3">
+                    Are You
+                    <ul class="py-0">
+                        <li>A Top Performer With a Message to Share?</li>
+                        <li>A Thought Leader?</li>
+                        <li>An Innovator?</li>
+                    </ul>
+                    Ballast Books Wants To Talk With You
+                </div>
+            </div>
+            <div class="row py-0">
+                <div class="exploreServicesLabel text-center py-0 k2d" data-aos="zoom-in" style="color: #5575A3;">Explore our services</div>
+                <div class="col col-12 col-md-6" data-aos="fade-down">
+                    <div class="serviceBx" style='background-image:url({{ "img/bg_book_publishing.jpg" | relURL }})'>
+                        <div class="serviceBxIn">
+                            <h3>Book Publishing</h3>
+                            <a href='{{"publishing" | relURL}}' class="button btn sml btn-outline-white">Learn More
+                                »</a>
+                        </div>
+                        <a href='{{"publishing" | relURL}}'><span class="linkOver"></span></a>
+                    </div>
+                </div>
+                <div class="col col-12 col-md-6" data-aos="fade-down">
+                    <div class="serviceBx" style='background-image:url({{ "img/bg_author_services.jpg" | relURL }})'>
+                        <div class="serviceBxIn">
+                            <h3>Author Services</h3>
+                            <a href='{{ "services" | relURL }}' class="button btn sml btn-outline-white">Learn More
+                                »</a>
+                        </div>
+                        <a href='{{ "services" | relURL }}'><span class="linkOver"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center pt-3">
+                <div id="bannerBtn"><a href='{{ "/contact-us/submit-your-book-idea" | relURL }}'
+                    class="button sml">Submit Your Book Idea</a></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="home-authors" style="background-color: #fff;">
+        <div id="authorsliderbook"></div>
+        <div class="container d-flex flex-column justify-content-center align-items-center py-5">
+            <h3 class="sectionTitle">Meet Our Authors</h3>
+            <div id="author-slider" class="flexslider">
+                <ul class="slides clearfix">
+                    {{ range .Site.Taxonomies.authors }}
+                    {{ if and .Page.Params.bio_image .Page.Content }}
+                    <li data-author-book="{{ .Page.Params.author_book }}">
+                        <div class="authorSlideBx bg-white">
+                            <div class="authorImgBx bg-white">
+                                <div class="authorImg" style="background-image:url({{ .Page.Params.bio_image }})"></div>
+                            </div>
+                            <div class="slideBxContent bg-white">
+                                <h3><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></h3>
+                                {{ $words := split .Page.Content " " }}
+                                {{ $excerpt := "" }}
+                                {{ range first 30 $words }}{{ $excerpt = printf "%s %s" $excerpt . }}{{ end }}
+                                <div class="authorDesc">{{ $excerpt | safeHTML }}...</div>
+                                <div class="gridBxBtn">
+                                    <a href="{{ .Page.Permalink }}" class="button btn btn-outline-white sml">Learn More
+                                        »</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{ end }}
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="py-5">
+        <div class="container d-flex flex-column gap-5">
+            <h3 class="home-services-tagline text-center py-0">Most Recent Blog</h3>
+            <div class="row servicesRow py-0">
+                {{ range first 1 (where (.Site.RegularPages.ByParam "date").Reverse "Type" "blog") }}
+                <div class="col col-12 col-md-12">
+                    <div class="gridBx">
+                        {{ if .Params.image }}
+                        <div class="servicesImg" data-aos="fade-right"
+                            style="background-image:url({{ .Params.image }})"></div>
+                        {{end}}
+                        <div class="servicesContent {{ if .Params.image }}withImg{{end}}" data-aos="fade-left">
+                            <h3>{{.Title}}</h3>
+                            <div class="serviceDesc">{{.Description}}</div>
+                            <div class="gridBxBtn">
+                                <a href="{{.Permalink}}" class="button tiny">Read More »</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+            <div class="newsBtn text-center py-0">
+                <a href='{{ "/blog" | relURL }}' class="button sml">Read More Blog Entries »</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials pt-5" style="padding-bottom: 0 !important;">
+        <div class="container d-flex flex-column gap-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Ballast Author Testimonials</h2>
+                </div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="col-12 col-md-8  text-center"
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 60px;">
+                            <img src="/img/testimonials-headshots/JD McCabe.jfif" alt=""
+                                style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                            <p style="text-align: left;"><i>"The list of accolades I could provide regarding my
+                                    experience with Ballast Books could be quite long. I will suffice it to say that
+                                    Ballast has delivered on every service they claim to offer. As a first-time author,
+                                    I have had direct access to the founder of Ballast Books, Andy Symonds. From day
+                                    one, he began to educate me on every step of the publishing process and my
+                                    alternatives for publishing, distribution, etc. Andy and his entire team have been
+                                    very responsive and professional every step of the way. The distribution network and
+                                    marketing services that Ballast offers have been instrumental for creating
+                                    opportunities for increased exposure for my memoir. Andy was beyond gracious when he
+                                    connected me with the right folks (outside of his organization) that enabled me to
+                                    create an audio version of my book from the comfort of my home. I am beyond grateful
+                                    to Andy Symonds and the team he has built at Ballast Books!"</i></p>
+                            <h3>-J.D. McCabe</h2>
+                                <p>Author of <i>The Third Gift</i></p>
+                                <img src="/img/bookstore/the-third-gift.jpg" alt=""
+                                    style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="col-12 col-md-8  text-center"
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 60px;">
+                            <img src="/img/testimonials-headshots/Marv Weidner.jpg" alt=""
+                                style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                            <p style="text-align: left;"><i>“As a writer publishing for the first time, Ballast Books
+                                    has been the perfect partner for me. It is very easy to be overwhelmed by the
+                                    publishing juggernaut. Ballast Books handled everything from developing the finished
+                                    manuscript and layout to printing, distribution, and marketing strategies. The
+                                    publisher himself, Andy Symonds, is accessible for advice and coaching and is a
+                                    great help when decisions need to be made. Breanne Beightol, their marketing pro,
+                                    has been terrific to work with and has secured numerous guest appearances on
+                                    podcasts and conferences. These folks are the best, full stop.”</i></p>
+                            <h3>-Marv Weidner</h2>
+                                <p>Author of <i>When the Rocks Sing</i></p>
+                                <img src="/img/bookstore/When the Rocks Sing.png" alt=""
+                                    style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="col-12 col-md-8  text-center"
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 60px;">
+                            <img src="/img/testimonials-headshots/Kyle Cozad.jpg" alt=""
+                                style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                            <p style="text-align: left;"><i>“Ballast Books made it easy for a first-time author to
+                                    produce and deliver a very professional product. From first contact to first book on
+                                    the shelves, no question was left unanswered, and the collaboration was second to
+                                    none. I’d gladly recommend their services for any author—a “first timer” like me or
+                                    someone who has multiple books on the drawing table. Thanks for helping me
+                                    deliver</i> Relentless Positivity <i>in a manner that exceeded my expectations!”</i>
+                            </p>
+                            <h3>-Rear Admiral Kyle Cozad</h2>
+                                <p>Author of <i>Relentless Positivity</i></p>
+                                <img src="/img/bookstore/relentless-positivity.png" alt=""
+                                    style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="col-12 col-md-8  text-center"
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 60px;">
+                            <img src="/img/testimonials-headshots/Justine Evirs.jpg" alt=""
+                                style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                            <p style="text-align: left;"><i>"The Ballast Books team was like having my own cheering
+                                    squad right next to me the entire time as I wrote my first book. They went back and
+                                    forth with me every step of the way. They carried me through the highs and lows of
+                                    writing a book and gave me the confidence to follow through. Don't even get me
+                                    started on the quality. The beauty and the quality of the book is the number one
+                                    compliment I get as soon as people get it in their hands. Ballast Books is worth
+                                    every penny!"</i></p>
+                            <h3>-Justine Evirs</h2>
+                                <p>Author of <i>F This</i></p>
+                                <img src="/img/bookstore/F-this.png" alt=""
+                                    style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="col-12 col-md-8  text-center"
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 60px;">
+                            <img src="/img/testimonials-headshots/Dan Blakeley.png" alt=""
+                                style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                            <p style="text-align: left;"><i>"As first-time authors, we had no idea what to expect when
+                                    publishing. But Andy and his team did an incredible job walking us through the
+                                    entire process and our options for publishing and laid out the expectations and
+                                    timelines for our team.</i> The Twenty-Year War<i> is a large profile coffee table
+                                    photo journal with high-detail images and custom layouts on every page. The timeline
+                                    to produce and release a book of its magnitude was astonishingly tight. Any other
+                                    publisher would have likely laughed us out of the room, but we were pleasantly
+                                    surprised by the enthusiasm of Andy's team to get our book across the finish line in
+                                    time for our release date."</i></p>
+                            <h3>-Dan Blakeley</h2>
+                                <p>Author of <i>The Twenty-Year War</i></p>
+                                <img src="/img/bookstore/the-twenty-year-war-cropped.png" alt=""
+                                    style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="col-12 col-md-8  text-center"
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 60px;">
+                            <img src="/img/testimonials-headshots/Kristin Cronic.png" alt=""
+                                style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top left; margin-bottom: 20px;">
+                            <p style="text-align: left;"><i>“It was my goal for many years to publish a coffee table
+                                    book, and I initially felt overwhelmed by the possibilities. I knew I needed the
+                                    editorial and design support from a publishing company but had strong opinions on
+                                    many visual elements that I knew could be usurped by a traditional publishing model.
+                                    In this research phase, I discovered Ballast Books through the National Veterans
+                                    Memorial and Museum, as they had recently published </i>The Twenty-Year War.<i> The
+                                    quality and visual appeal of that book, along with feeling comfortable that my
+                                    military theme would fit into their library, prompted me to inquire.
+                                    <br>
+                                    <br>
+                                    I immediately felt at home and excited about the hybrid model Ballast Books uses.
+                                    Every step of the way, they provided high-level professional support while honoring
+                                    my vision for the project. Their meticulous attention to detail and expertise helped
+                                    the book to be elevated beyond what I thought it could be. Everyone on the team made
+                                    the experience outstanding—from vision casting to editing, design, logistics,
+                                    strategy, and marketing. I’m so glad I worked with Ballast Books on this
+                                    project!”</i></p>
+                            <h3>-Kristin Cronic</h2>
+                                <p>Author of <i>A Midshipman’s Journey</i></p>
+                                <img src="/img/bookstore/a-midshipmans-journey.jpg" alt=""
+                                    style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="col-12 col-md-8  text-center"
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 60px;">
+                            <img src="/img/testimonials-headshots/matthew.png" alt=""
+                                style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top left; margin-bottom: 20px;">
+                            <p style="text-align: left;"><i>“Have you dreamed of writing a book? What happens when your
+                                    dream suddenly becomes a nightmare? Changing publishers midstream is an author’s
+                                    nightmare—kind of like jumping out of an airplane without a parachute and hoping to
+                                    grab a friend on the way down During the publishing of my second book, I lost my
+                                    parachute (aka my publisher) and was freefalling—that is, until Ballast Books
+                                    invited me to grab onto their parachute. Ballast Books only took on my unfinished
+                                    project, but they also they did it with class and professionalism. I had a tight
+                                    deadline to meet, and the team at Ballast was unwavering in their commitment. Even
+                                    words are my life, I find myself without the words to describe the depth of
+                                    gratitude and respect I have for
+                                    the Ballast team. If you have suddenly found yourself without a publishing home or
+                                    are
+                                    otherwise considering your publishing options, put Ballast Books at the top of your
+                                    list. I think you will be as pleased as I am…maybe more!”</i></p>
+                            <h3>-Matthew Q. Lesser</h2>
+                                <p>Author of <i>unEngaged</i></p>
+                                <img src="/img/bookstore/unEngaged 3D cover.png" alt=""
+                                    style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="col-12 col-md-8  text-center"
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 60px;">
+                            <img src="/img/testimonials-headshots/michaelstutts.jpg" alt=""
+                                style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top left; margin-bottom: 20px;">
+                            <p style="text-align: left;"><i>“As a first-time author (who isn&#39;t really an author), I
+                                    was very intimidated going into the experience of writing a book. From the
+                                    beginning, Ballast gave me comfort guidance, and unfiltered truth that gave me the
+                                    confidence to achieve my dream of publishing a memoir. They were easy to work with,
+                                    responsive, and direct - all of which matters for full-time executives like myself.
+                                    I would recommend Ballast to anyone with a dream of becoming a published
+                                    author.”</i></p>
+                            <h3>-Michael Stutts</h2>
+                                <p>Author of <i>There’s No Room Service at the Psych Ward</i></p>
+                                <img src="/img/bookcover/MichaelStutts_FrontCover_Hardcover_Lock_3D.png" alt=""
+                                    style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="col-12 col-md-8  text-center"
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 60px;">
+                            <img src="/img/testimonials-headshots/D.Toro.jpg" alt=""
+                                style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top left; margin-bottom: 20px;">
+                            <p style="text-align: left;"><i>“As a first-time author, the publishing process can be
+                                    confusing and overwhelming. I am glad I selected Ballast Books as my publishing
+                                    company. From day one, the Ballast Team was incredibly professional and attentive,
+                                    providing a level of reliability and efficiency that surpassed all my expectations.
+                                    The quality of their book publishing service was exceptional, and I would recommend
+                                    Ballast Books to any author looking for a reliable team to help with all aspects of
+                                    the publishing process. Thank you, Ballast Books, for not only meeting but exceeding
+                                    my expectations!”</i></p>
+                            <h3>-Dafne Toro</h2>
+                                <p>Author of <i>The Strategic Business of You</i></p>
+                                <img src="/img/bookcover/The Strategic Business of You_3DFC.png" alt=""
+                                    style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="col-12 col-md-8  text-center"
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 60px;">
+                            <img src="/img/testimonials-headshots/diana-smith.jpg" alt=""
+                                style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top left; margin-bottom: 20px;">
+                            <p style="text-align: left;"><i>"Ballast Books is among a new wave of hybrid publishers
+                                    democratizing and disrupting the publishing industry. Their business model opens
+                                    publishing up to visionary authors with a purpose whose works often get overlooked
+                                    by traditional publishers. Every step of the way, Ballast’s collaborative approach
+                                    and exceptional quality has equaled or surpassed my experience of traditional
+                                    publishers within the top seven."</i></p>
+                            <h3>-Diana Smith</h2>
+                                <p>Author of <i>Remaking the Space Between Us</i></p>
+                                <img src="/img/bookcover/Remaking the Space Between Us_3DFC.png" alt=""
+                                    style="max-width: 200px; aspect-ratio: 1/1; border-radius: 1000px; object-fit: cover; object-position: top; margin-bottom: 20px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section id="signup" style="background-color: #f3f3f3;">
+        <div class="container">
+            <div class="row">
+                <div class="col col-12 col-md-6" data-aos="fade-right">
+                    <h3 class="sectionTitle">Keep Up!</h3>
+                    <p>Stay up to date with all the cool projects at Ballast Books. Plus, get publishing and marketing
+                        tips. Unsubscribe at any time. We won’t be offended!</p>
+                </div>
+                <div class="col col-12 col-md-6" data-aos="fade-right">
+                    <div class="formBx">
+                        {{ partial "signup.html" .}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+
+
+    {{ partial "footer.html" . }}
+
+
+    {{ partial "scripts.html" . }}
+
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            pagination: {
+                el: ".swiper-pagination",
+                type: "progressbar",
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+
+</body>
+
+</html>

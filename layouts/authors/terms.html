@@ -1,0 +1,65 @@
+{{ partial "head.html" . }}
+
+<body {{ if .Params.id }}id='{{ .Params.id }}' {{end}}>
+    {{ partial "header.html" . }}
+    <section id="banner">
+        {{ if .Params.banner_image }}
+        <div class="banner-image aos-item" data-aos="fade-in"
+            style="background-image:url('{{ .Params.banner_image }}')"></div>
+        {{end}}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col col-12 col-sm-8 col-md-6 text-center animated fadeInDown">
+                    <h1>
+                        {{if .Params.banner_title}}
+                        {{.Params.banner_title|safeHTML}}
+                        {{end}}
+                    </h1>
+                    {{if .Params.banner_tagline}}
+                    <div class="bannerTagline">{{.Params.banner_tagline}}</div>
+                    {{end}}
+                    <div class="bannerTxt">
+                        {{if .Params.banner_text}}
+                        {{.Params.banner_text|safeHTML}}
+                        {{else}}
+                        {{ .Description }}
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <main>
+        <div class="container">
+            <div class="row gridRow">
+                {{ range .Data.Pages }}
+                <div class="col col-12" data-aos="fade-down">
+                    <div class="gridBx">
+                        <div class="authorImgBx">
+                            {{if .Params.bio_image }}
+                            <div class="authorImg" style="background-image:url({{ .Params.bio_image }})"></div>
+                            {{end}}
+                        </div>
+                        <div class="gridBxContent">
+                            <h3><a href="{{ .Permalink }}">{{.Params.title}}</a></h3>
+                            <div class="gridBxBtn">
+                                <a href="{{ .Permalink }}" class="button tiny">Learn More »</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+
+    </main>
+
+    {{ partial "join-family.html" . }}
+
+    {{ partial "footer.html" . }}
+
+    {{ partial "scripts.html" . }}
+
+</body>
+
+</html>

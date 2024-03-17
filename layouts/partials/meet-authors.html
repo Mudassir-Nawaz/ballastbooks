@@ -1,0 +1,28 @@
+<section id="home-authors">
+    <div id="authorsliderbook"></div>
+    <div class="container">
+        <h3 class="sectionTitle text-white">Meet Our Authors</h3>
+        <div id="author-slider" class="flexslider">
+            <ul class="slides clearfix">          
+                {{ range .Site.Taxonomies.authors }}
+                <li data-author-book="{{ .Page.Params.author_book }}">
+                    <div class="authorSlideBx">
+                        <div class="authorImgBx">
+                            <div class="authorImg" style="background-image:url({{ .Page.Params.bio_image }})"></div>
+                        </div>
+                        <div class="slideBxContent">
+                            <h3><a href="{{ .Page.Permalink }}">{{ .Page.Params.name }}</a></h3>
+                            <div class="authorDesc">{{.Page.Description}}</div>
+                            <div class="gridBxBtn">
+                                <a href="{{ .Page.Permalink }}" class="button btn btn-outline-white sml">Learn More »</a>
+                            </div>
+                        </div>
+    
+                    </div>
+
+                </li>
+        {{end}}
+    </ul>
+</div>
+    </div>
+</section>

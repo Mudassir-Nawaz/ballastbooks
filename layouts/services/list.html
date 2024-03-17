@@ -1,0 +1,78 @@
+{{ partial "head.html" . }}
+
+<body {{ if .Params.id }}id='{{ .Params.id }}' {{end}}>
+
+    {{ partial "header.html" . }}
+
+    <section id="banner">
+        {{ if .Params.banner_image }}
+        <div class="banner-image aos-item" data-aos="fade-in"
+            style="background-image:url('{{ .Params.banner_image }}')"></div>
+        {{end}}
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col col-12 col-sm-7 col-md-6 animated fadeInLeft">
+
+                    <h2>
+                        {{if .Params.banner_title}}
+                        {{.Params.banner_title|safeHTML}}
+                        {{else}}
+                        {{ .Title }}
+                        {{end}}
+                    </h2>
+                    {{if .Params.banner_tagline}}
+                    <div class="bannerTagline">{{.Params.banner_tagline | safeHTML}}</div>
+                    {{end}}
+                    <div class="bannerTxt">
+                        {{if .Params.banner_text}}
+                        {{.Params.banner_text|safeHTML}}
+                        {{else}}
+                        {{ .Description }}
+                        {{end}}
+                    </div>
+                    {{if .Params.banner_btn_label}}
+                        <div class="bannerBtn"><a href='{{ "contact-us/submit-your-book-idea" | relURL }}' class="button sml">{{.Params.banner_btn_label}}</a></div>
+                    {{end}}
+                </div>
+            </div>
+        </div>
+    </section>
+    <main>
+        <div class="container">
+            <h2 class="sectionTitle text-white">Our Services</h2>
+            <div class="row gridRow servicesRow">
+                {{ range (.Pages.ByParam "weight") }}
+                <div class="col col-12 col-md-12 {{ if .Params.image }}withImg{{end}}">
+                    <div class="gridBx">
+                        <div class="servicesImg"  data-aos="fade-right" style="background-image:url({{ .Params.image }})">
+                            {{ if .Params.caption }}
+                            <div class="caption">{{ .Params.caption }}</div>
+                            {{ end }}
+                        </div>
+                        <div class="servicesContent" data-aos="fade-left">
+                            <h3>{{.Title}}</h3>
+                            <div class="serviceDesc">{{.Description}}</div>
+                            <div class="gridBxBtn">
+                                <a href='{{ "contact-us/submit-your-book-idea" | relURL }}' class="button tiny">Get Started »</a>
+                            </div>
+                            {{ if .Params.more }}
+                            <a href="{{ .Params.more | relURL }}" class="text-link">Learn More</a>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+
+    </main>
+
+    {{ partial "join-family.html" . }}
+
+    {{ partial "footer.html" . }}
+
+    {{ partial "scripts.html" . }}
+
+</body>
+
+</html>

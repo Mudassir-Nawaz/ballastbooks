@@ -1,0 +1,71 @@
+{{ partial "head.html" . }}
+
+<body {{ if .Params.id }}id='{{ .Params.id }}' {{end}} class="single-author">
+
+    {{ partial "header.html" . }}
+
+    <section id="banner">
+        <div class="container">
+            {{if .Params.bio_image }}
+            <div class="authorImgBx" data-aos="zoom-in">
+                <div class="authorImg" style="background-image:url({{ .Params.bio_image }})"></div>
+            </div>
+            
+
+            <div class="authorMeta" data-aos="fade-in">
+                <h1>{{.Title}}</h1>
+                <div class="bannerTxt">{{.Content}}</div>
+            </div>
+            {{else}}
+
+            <div class="authorMeta col-12 text-center" data-aos="fade-in">
+                <h1>{{.Title}}</h1>
+                <div class="bannerTxt">{{.Content}}</div>
+            </div>
+            
+            {{end}}
+
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <h3 class="sectionTitle text-white pb-2 text-center">Books by {{.Title}}</h3>
+           
+
+            <div class="row gridRow booksRow">
+                {{ range .Pages }}
+            <div class="col col-12 col-md-4 col-sm-6" data-aos="fade-down">
+                <div class="gridBx">
+                    <div class="bookImgBx">
+                        <div class="bookImg" style="background-image:url({{ .Params.image }})"></div>
+                    </div>
+                    <div class="gridBxContent">
+                        <h3><a href="{{ .Permalink }}">{{.Title}}</a></h3>
+                        
+                        {{if .Params.price}}
+                            <div class="bookPrice">${{.Params.price}}</div>
+                        {{end}}
+                        <div class="gridBxBtn">
+                            <a href="{{ .Permalink }}" class="button tiny">Add To Cart »</a>
+                            <span></span>
+                            <a class="linkMore" href="{{.Permalink}}">or Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+            </div>
+
+        </div>
+    </main>
+
+    {{ partial "join-family.html" . }}
+
+    {{ partial "footer.html" . }}
+
+    {{ partial "scripts.html" . }}
+
+</body>
+
+</html>

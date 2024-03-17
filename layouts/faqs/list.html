@@ -1,0 +1,71 @@
+{{ partial "head.html" . }}
+
+<body {{ if .Params.id }}id='{{ .Params.id }}'{{end}} class="default-list">
+
+    {{ partial "header.html" . }}
+
+    <section id="banner">
+        {{ if .Params.banner_image }}
+        <div class="banner-image aos-item" data-aos="fade-in"
+            style="background-image:url('{{ .Params.banner_image }}')"></div>
+        {{end}}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col col-12 col-md-6 text-center animated fadeInDown">
+                    <h2>
+                        {{if .Params.banner_title}}
+                        {{.Params.banner_title|safeHTML}}
+                        {{else}}
+                        {{ .Title }}
+                        {{end}}
+                    </h2>
+                    {{if .Params.banner_tagline}}
+                    <div class="bannerTagline">{{.Params.banner_tagline | safeHTML}}</div>
+                    {{end}}
+                    <div class="bannerTxt">
+                        {{if .Params.banner_text}}
+                        {{.Params.banner_text|safeHTML}}
+                        {{else}}
+                        {{ .Description }}
+                        {{end}}
+                    </div>
+                    {{if .Params.banner_btn_label}}
+                        <div class="bannerBtn"><a href="{{.Params.banner_btn_link}}" class="button sml">{{.Params.banner_btn_label}}</a></div>
+                    {{end}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+
+        <div class="container">
+    
+          <div id="faqsBlock">
+           
+            <div class="faqCategory">
+              
+              <div class="faqPosts">
+                {{ range .Pages }}
+                <div class="faqBx" id="{{ .File.ContentBaseName}}">
+                  <h3 class="faqQ"><a href="javascript:void(0)">{{ .Title }}</a> </h3>
+                  <div class="faqA">{{ .Content }}</div>
+                </div>
+                {{ end }}
+              </div>
+            </div>
+          
+    
+          </div>
+        </div>
+      </main>
+
+    {{ partial "join-family.html" . }}
+
+    {{ partial "footer.html" . }}
+
+    {{ partial "scripts.html" . }}
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<footer>
+    <div class="container">
+        <div id="footerLogo">
+            <a href='{{ "/" | relURL }}'><img src='{{ "img/logo_footer.svg" | relURL }}' alt="{{ .Site.Title }} Logo"></a>
+        </div>
+        <div id="footerLeft">
+            <div id="footerNav">
+                <ul>
+                    {{ $currentPage := . }}
+                    {{ range .Site.Menus.footer }}
+                    <li
+                        class='menu-item{{if or ($currentPage.IsMenuCurrent "footer" .) ($currentPage.HasMenuCurrent "footer" .) }} current-menu-item{{end}}'>
+                        <a title="{{ .Name }}" href="{{ .URL }}">{{ .Name }}</a> </li>
+                    {{ end }}
+                </ul>
+            </div>
+            <div id="footerBtns">
+                {{ if isset .Site.Params "start_book_link" }}
+                <div id="footerBtn"><a href='{{ "/contact-us/submit-your-book-idea" | relURL }}' class="button sml">Submit Your Book Idea</a>
+                </div>
+                {{end}}
+                <div id="footerCheckout">
+                   
+                    <button class="snipcart-checkout button sml btn btn-outline-white"><i class="fas fa-shopping-cart"></i> Checkout (<span class="snipcart-items-count"></span>) »</button>
+                </div>
+            </div>
+            <div id="copyright" class="small">Copyright
+                <script type="text/javascript">document.write(new Date().getFullYear());</script> - {{ .Site.Title }} -
+                All Rights Reserved
+            </div>
+        </div>
+
+    </div>
+</footer>
