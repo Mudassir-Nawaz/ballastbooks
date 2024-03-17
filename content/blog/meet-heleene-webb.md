@@ -2,7 +2,7 @@
 title: "Meet Helene Webb, Ballast Books PR Specialist"
 description: "Helene assists the marketing team in securing events and media coverage for our authors upon release..."
 date: 2024-03-16
-image: /img/blog/meet-heleene.jpeg
+image: /img/blog/helene.jpeg
 ---
 
 Helene assists the marketing team in securing events and media coverage for our authors upon release.
