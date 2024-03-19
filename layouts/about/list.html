@@ -4,7 +4,7 @@
 
     {{ partial "header.html" . }}
 
-    <section id="banner">
+    <section id="banner" style="padding: 200px 0 240px 0;">
 
         {{ if .Params.banner_image }}
         <div class="banner-image aos-item" data-aos="fade-in"
@@ -14,7 +14,7 @@
         <div class="container">
 
             <div class="row justify-content-end">
-                <div class="col col-12 col-sm-7 col-md-6 animated fadeInLeft">
+                <div class="col col-12 col-sm-7 col-md-6 animated fadeInLeft d-flex flex-column gap-3">
 
                     <h2>
                         {{if .Params.banner_title}}
@@ -39,7 +39,7 @@
     </section>
 
                 {{ range (.Pages.ByParam "weight") }}
-                <section id="{{ .Params.id }}">
+                <section id="{{ .Params.id }}" style="padding: 100px 0 140px 0;">
                     {{ if .Params.books_slider}}
                     {{ partial "about-book-slider.html" . }}
                     {{end}}
@@ -50,7 +50,7 @@
                     {{end}}
                     <div class="container">
                         <div class="row {{ .Params.position }}">
-                            <div class="col-12 {{ .Params.size }}">
+                            <div class="col-12 {{ .Params.size }} d-flex flex-column gap-3">
                                 {{ .Content }}
                             </div>
                         </div>

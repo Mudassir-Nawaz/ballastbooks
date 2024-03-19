@@ -4,7 +4,7 @@
 
     {{ partial "header.html" . }}
 
-    <section id="our-team">
+    <section id="our-team" style="padding: 50px 0 110px 0;">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
@@ -14,7 +14,7 @@
             <div class="row d-flex justify-content-center">
                 {{ range (where (.Site.RegularPages.ByWeight) "Type" "team") }}
 
-                <div class="col-12 col-md-4 text-center">
+                <div class="col-12 col-md-4 text-center mb-5">
                     <img src="{{ .Params.image }}" class="img-team" alt="{{ .Title }} Image - Ballast Books Team">
                     <h2>{{ .Title }}</h2>
                     {{ if .Params.designation }}

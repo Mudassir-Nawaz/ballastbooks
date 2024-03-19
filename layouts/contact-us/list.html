@@ -4,14 +4,14 @@
 
     {{ partial "header.html" . }}
 
-    <section id="banner">
+    <section id="banner" class="pt-4 pb-5">
         {{ if .Params.banner_image }}
         <div class="banner-image aos-item" data-aos="fade-in"
             style="background-image:url('{{ .Params.banner_image }}')"></div>
         {{end}}
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col col-12 col-md-6 text-center animated fadeInDown">
+                <div class="col col-12 col-md-6 text-center animated fadeInDown d-flex flex-column gap-3">
                     <h2>
                         {{if .Params.banner_title}}
                         {{.Params.banner_title|safeHTML}}
@@ -22,7 +22,7 @@
                     {{if .Params.banner_tagline}}
                     <div class="bannerTagline">{{.Params.banner_tagline}}</div>
                     {{end}}
-                    <div class="bannerTxt">
+                    <div class="bannerTxt inria">
                         {{if .Params.banner_text}}
                         {{.Params.banner_text|safeHTML}}
                         {{else}}

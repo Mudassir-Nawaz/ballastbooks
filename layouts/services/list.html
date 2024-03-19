@@ -4,14 +4,14 @@
 
     {{ partial "header.html" . }}
 
-    <section id="banner">
+    <section id="banner" style="padding: 200px 0 240px 0;">
         {{ if .Params.banner_image }}
         <div class="banner-image aos-item" data-aos="fade-in"
             style="background-image:url('{{ .Params.banner_image }}')"></div>
         {{end}}
         <div class="container">
             <div class="row justify-content-end">
-                <div class="col col-12 col-sm-7 col-md-6 animated fadeInLeft">
+                <div class="col col-12 col-sm-7 col-md-6 animated fadeInLeft d-flex flex-column gap-3">
 
                     <h2>
                         {{if .Params.banner_title}}
@@ -23,7 +23,7 @@
                     {{if .Params.banner_tagline}}
                     <div class="bannerTagline">{{.Params.banner_tagline | safeHTML}}</div>
                     {{end}}
-                    <div class="bannerTxt">
+                    <div class="bannerTxt inria">
                         {{if .Params.banner_text}}
                         {{.Params.banner_text|safeHTML}}
                         {{else}}
@@ -31,7 +31,7 @@
                         {{end}}
                     </div>
                     {{if .Params.banner_btn_label}}
-                        <div class="bannerBtn"><a href='{{ "contact-us/submit-your-book-idea" | relURL }}' class="button sml">{{.Params.banner_btn_label}}</a></div>
+                        <div class="bannerBtn pt-2"><a href='{{ "contact-us/submit-your-book-idea" | relURL }}' class="button sml">{{.Params.banner_btn_label}}</a></div>
                     {{end}}
                 </div>
             </div>

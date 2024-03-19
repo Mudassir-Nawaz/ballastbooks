@@ -55,7 +55,7 @@
         }
     </style>
 
-    <section id="banner">
+    <section id="banner" style="padding: 70px 0 120px 0;">
         {{ if .Params.banner_image }}
         <div class="banner-image aos-item" data-aos="fade-in"
             style="background-image:url('{{ .Params.banner_image }}')"></div>
@@ -63,10 +63,10 @@
         <div class="container">
             <div class="row">
                 <div class="col col-11 col-md-8 animated fadeInLeft">
-                    <div class="bannerTxtBx d-flex flex-column justify-contenct-center align-items-center gap-3">
-                        <div id="bannerBtn d-flex justify-content-center align-self-center"><a href='{{ "/contact-us/submit-your-book-idea" | relURL }}'
+                    <div class="bannerTxtBx">
+                        <div id="bannerBtn" class="d-flex justify-content-center align-self-center pb-5"><a href='{{ "/contact-us/submit-your-book-idea" | relURL }}'
                                 class="button sml">Submit Your Book Idea</a></div>
-                        <div class="d-flex flex-column gap-3">
+                        <div class="d-flex flex-column py-0 gap-3">
                             <h2 class="py-0">
                                 {{if .Params.banner_title}}
                                 {{.Params.banner_title|safeHTML}}
@@ -75,9 +75,9 @@
                                 {{end}}
                             </h2>
                             {{if .Params.banner_tagline}}
-                            <h3 class="bannerTagline">{{.Params.banner_tagline | safeHTML}}</h3>
+                            <h3 class="bannerTagline py-0">{{.Params.banner_tagline | safeHTML}}</h3>
                             {{end}}
-                            <div class="bannerTxt k2d">
+                            <div class="bannerTxt inria py-0 lh-base">
                                 {{if .Params.banner_text}}
                                 {{.Params.banner_text|safeHTML}}
                                 {{else}}
@@ -86,7 +86,7 @@
                             </div>
                         </div>
 
-                        <div class="bannerBtn d-flex justify-content-center py-0"><a href='{{ "/about" | relURL }}'
+                        <div class="bannerBtn d-flex justify-content-center pb-0 pt-5"><a href='{{ "/about" | relURL }}'
                                 class="button sml">{{.Params.banner_btn_label}}</a></div>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                 </div>
             </div>
             <div class="row py-0">
-                <div class="exploreServicesLabel text-center py-0 k2d" data-aos="zoom-in" style="color: #5575A3;">Explore our services</div>
+                <div class="exploreServicesLabel text-center py-0 inria" data-aos="zoom-in" style="color: #5575A3;">Explore our services</div>
                 <div class="col col-12 col-md-6" data-aos="fade-down">
                     <div class="serviceBx" style='background-image:url({{ "img/bg_book_publishing.jpg" | relURL }})'>
                         <div class="serviceBxIn">
@@ -183,7 +183,7 @@
 
     <section id="home-authors" style="background-color: #fff;">
         <div id="authorsliderbook"></div>
-        <div class="container d-flex flex-column justify-content-center align-items-center py-5">
+        <div class="container d-flex flex-column justify-content-center align-items-center pb-5">
             <h3 class="sectionTitle">Meet Our Authors</h3>
             <div id="author-slider" class="flexslider">
                 <ul class="slides clearfix">
@@ -216,7 +216,7 @@
 
     <section id="news" class="py-5">
         <div class="container d-flex flex-column gap-5">
-            <h3 class="home-services-tagline text-center py-0">Most Recent Blog</h3>
+            <h3 class="home-services-tagline text-center py-0 lh-1">Most Recent Blog</h3>
             <div class="row servicesRow py-0">
                 {{ range first 1 (where (.Site.RegularPages.ByParam "date").Reverse "Type" "blog") }}
                 <div class="col col-12 col-md-12">

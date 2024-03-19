@@ -4,7 +4,7 @@
 
     {{ partial "header.html" . }}
 
-    <section id="banner">
+    <section id="banner" class="pt-4 pb-5">
         {{ if .Params.banner_image }}
         <div class="banner-image aos-item" data-aos="fade-in"
             style="background-image:url('{{ .Params.banner_image }}')"></div>
