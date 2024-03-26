@@ -4,7 +4,7 @@
 
     {{ partial "header.html" . }}
 
-    <section id="banner" style="padding: 200px 0 240px 0;">
+    <section id="banner" style="padding: 80px 0 90px 0;">
 
         {{ if .Params.banner_image }}
         <div class="banner-image aos-item" data-aos="fade-in"
@@ -39,7 +39,7 @@
     </section>
 
                 {{ range (.Pages.ByParam "weight") }}
-                <section id="{{ .Params.id }}" style="padding: 100px 0 140px 0;">
+                <section id="{{ .Params.id }}" style="padding: 70px 0 70px 0;">
                     {{ if .Params.books_slider}}
                     {{ partial "about-book-slider.html" . }}
                     {{end}}
